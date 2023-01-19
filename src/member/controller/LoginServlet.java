@@ -1,6 +1,8 @@
 package member.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,7 +35,17 @@ public class LoginServlet extends HttpServlet {
 		
 		MemberService mService = new MemberService();
 		int result = mService.selectCheckLogin(memberId, memberPw);
-		System.out.print(result);
+		if(result > 0) {
+			// 로그인 성공
+			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/member/loginSuccess.jsp");
+			view.forward(request, response);
+		} else {	
+			// 로그인 실패
+			request.setAttribute("title", "로그인 실패");
+			request.setAttribute("msg", "아이디와 비밀번호를 확인해주세요.");
+			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/member/error.jsp");
+			view.forward(request, response);
+		}
 		
 	}
 

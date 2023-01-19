@@ -28,5 +28,25 @@ public class JDBCTemplate {
 		}
 		return conn;	// 싱글톤이 적용된 연결 생성 완료
 	}
-	
-}
+	// 커밋
+	public static void commit(Connection conn) {
+		try {
+			if(conn != null && !conn.isClosed()) {
+				conn.commit();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	// 롤백
+	public static void rollback(Connection conn) {
+		try {
+			if(conn != null && !conn.isClosed()) {
+				conn.rollback();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	// 연결 해제
+}	
