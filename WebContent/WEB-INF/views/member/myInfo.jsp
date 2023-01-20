@@ -1,23 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입</title>
+<title>마이페이지</title>
 <link rel="stylesheet" href="/resources/css/member.css">
 </head>
 <body>
-    <h1>회원가입</h1>
-    <h3>회원정보를 입력하세요</h3>
+    <h1>마이페이지</h1>
     <div>
-        <form action="/member/enrollView.kh" method="post">
+        <form action="/member/update.kh" method="post">
             <fieldset>  
-                <legend>회원가입</legend>
+                <legend>회원 상세 정보</legend>
                 <ul id="member-register">
                     <li>
                         <label for="member-id">아이디</label>
-                        <input type="text" id="member-id" name="member-id" value="${member.memberId }">
+                        <input type="text" id="member-id" name="member-id" value="${member.memberId }" readonly>
                     </li>
                     <li>
                         <label for="member-pw">비밀번호</label>
@@ -25,7 +25,7 @@
                     </li>
                     <li>
                         <label for="member-name">이름</label>
-                        <input type="text" id="member-name" name="member-name" value="${member.memberName }">
+                        <input type="text" id="member-name" name="member-name" value="${member.memberName }" readonly>
                     </li>
                     <li>
                         <label for="age">나이</label>
@@ -33,8 +33,15 @@
                     </li>
                     <li>
                         <label for="gender">성별</label>
-                        남<input type="radio" id="gender" name="member-gender" value="M">
-                        여<input type="radio" id="gender" name="member-gender" value="F">
+                        <!-- input태그 전체를 감싸면 가입 시 선택한 값 1개만 출력됨(수정 불가) 
+                        	checked값만 감싸면 체크박스 선택 가능 (수정 가능)
+                        <c:if test="${member.memberGender eq 'M' }">
+                        남<input type="radio" id="gender" name="member-gender" value="M" checked></c:if>
+                        <c:if test="${member.memberGender eq 'F' }">
+                        여<input type="radio" id="gender" name="member-gender" value="F" checked></c:if>
+                        -->
+                        남<input type="radio" id="gender" name="member-gender" value="M" <c:if test="${member.memberGender eq 'M' }">checked</c:if>>
+                        여<input type="radio" id="gender" name="member-gender" value="F" <c:if test="${member.memberGender eq 'F' }">checked</c:if>>
                     </li>
                     <li>
                         <label for="email">이메일</label>
@@ -54,12 +61,12 @@
                     </li>
                     <li>
                         <label for="m-date">가입날짜</label>
-                        <input type="text" id="m-date" value="${member.memberDate }">
+                        <input type="text" id="m-date" value="${member.memberDate }" readonly>
                     </li>
                 </ul>
             </fieldset>
             <div>
-                <input type="submit" value="가입하기">
+                <input type="submit" value="수정하기">
                 <input type="reset" value="초기화">
             </div>
         </form>
