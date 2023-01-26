@@ -7,7 +7,9 @@
 <title>${title }</title>
 </head>
 <body>
-	<h1>서비스 결과</h1>
+	<h1>${title }</h1>
 	<p>${msg }</p>
+	<a herf="/index.jsp">홈으로 이동</a>
+	<!-- 로그인 하지 않으면 로그인 폼을 보여줘 로그인 하도록 함 -->
 </body>
 </html>

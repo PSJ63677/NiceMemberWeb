@@ -36,7 +36,7 @@ public class RemoveServlet extends HttpServlet {
 		} else {
 			request.setAttribute("title", "회원 탈퇴 실패");
 			request.setAttribute("msg", "회원 탈퇴가 완료되지 않았습니다.");
-			request.getRequestDispatcher("/WEB-INF/views/member/error.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/views/common/error.jsp").forward(request, response);
 		}
 	}
 
