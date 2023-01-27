@@ -38,6 +38,14 @@
 						<td style="text-align:center;">${notice.viewCount }</td>
 					</tr>
 				</c:forEach>
+				<tr>
+					<td colspan="5" align="center">
+						${pageNavi }
+				<!--	<a href="/notice/list?page=1">1</a> <a href="/notice/list?page=2">2</a>
+						<a href="/notice/list?page=3">3</a> <a href="/notice/list?page=4">4</a>
+						<a href="/notice/list?page=5">5</a>	   -->
+					</td>
+				</tr>
 			</tbody>
 		</table>
 	</body>
